@@ -26,15 +26,16 @@ See example_site for an example Django site which can be used to play with the
 app, which has the non-Duo setup already completed, as well as the setup needed
 for a complete barebones site with authorization.  To run this site:
 
-As noted above, set up path, edit DUO_IKEY, DUO_SKEY, DUO_HOST in settings,
-and copy Duo-Web-v1.bundled.min.js to the static directory.
+As noted above, set up path, edit `DUO_IKEY`, `DUO_SKEY`, `DUO_HOST`
+in settings.py, and copy Duo-Web-v1.bundled.min.js to the static directory.
 
 Start the site:
 
     python manage.py syncdb; python manage.py runserver
 
-Add a user with same username as on your Duo auth server with the Django admin
-interface (or enroll when prompted).
+Add a Django user.  The Duo user will have the same username as the
+Django user; if this user does not exist, you will be able to enroll
+as that user.
 
 Now you can visit interesting URLs such as /public, /private, /duo_private,
 and /duo_private_manual.  To remove your Django and Duo authorization cookies,
