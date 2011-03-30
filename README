@@ -23,10 +23,11 @@ js
 	Duo Javascript library, to be hosted by your webserver.
 
 csharp
+java
 php
 python
-	Duo web SDKs for .NET, PHP, and Python environments. See the
-	README and examples contained within for details.
+	Duo web SDKs for ASP.NET, Java, PHP, and Python environments. 
+	See the README and examples contained within for details.
 
 Usage
 -----
@@ -45,7 +46,7 @@ How it works:
        auth state (as the original login form handler did, likely in a
        cookie/session).
 
-Eval users (e-mail <duo_iframe@duosecurity.com> to request a trial):
+Eval users (e-mail <duo_web@duosecurity.com> to request a trial):
 be sure to set your Duo API host to "api-eval.duosecurity.com".
 
 Support
