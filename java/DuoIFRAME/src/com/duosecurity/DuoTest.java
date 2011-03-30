@@ -17,18 +17,18 @@ public class DuoTest extends TestCase {
 	private static final String FUTURE_RESPONSE = "AUTH|dGVzdHVzZXJ8RElYWFhYWFhYWFhYWFhYWFhYWFh8MTYxNTcyNzI0Mw==|d20ad0d1e62d84b00a3e74ec201a5917e77b6aef";
 
 	public void testSignRequest() {
-		String request_sig = DuoIFRAME.signRequest(SKEY, IKEY, USER);
+		String request_sig = DuoWeb.signRequest(SKEY, IKEY, USER);
 		assertNotNull(request_sig);
 	}
 
 	public void testVerifyResponse() {
-		String invalid_user = DuoIFRAME.verifyResponse(SKEY, INVALID_RESPONSE);
+		String invalid_user = DuoWeb.verifyResponse(SKEY, INVALID_RESPONSE);
 		assertNull(invalid_user);
 
-		String expired_user = DuoIFRAME.verifyResponse(SKEY, EXPIRED_RESPONSE);
+		String expired_user = DuoWeb.verifyResponse(SKEY, EXPIRED_RESPONSE);
 		assertNull(expired_user);
 
-		String future_user = DuoIFRAME.verifyResponse(SKEY, FUTURE_RESPONSE);
+		String future_user = DuoWeb.verifyResponse(SKEY, FUTURE_RESPONSE);
 		assertNotNull(future_user);
 		assertTrue(future_user.equals(USER));
 	}

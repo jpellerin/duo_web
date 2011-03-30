@@ -1,6 +1,6 @@
 package com.duosecurity;
 
-public final class DuoIFRAME {
+public final class DuoWeb {
 	private static final String REQUEST_PREFIX = "TX";
 	private static final int REQUEST_EXPIRE = 300;
 	private static final String RESPONSE_PREFIX = "AUTH";
