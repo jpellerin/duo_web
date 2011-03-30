@@ -1,6 +1,6 @@
 <?php
 
-require_once("duo_iframe.php");
+require_once("duo_web.php");
 
 const IKEY = "DIXXXXXXXXXXXXXXXXXX";
 const SKEY = "deadbeefdeadbeefdeadbeefdeadbeefdeadbeef";
