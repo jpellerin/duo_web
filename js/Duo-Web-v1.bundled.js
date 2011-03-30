@@ -6471,7 +6471,7 @@ window.jQuery = window.$ = jQuery;
 
 
 /*
- * Duo IFRAME SDK v1
+ * Duo Web SDK v1
  * Copyright 2011, Duo Security
  */
 
