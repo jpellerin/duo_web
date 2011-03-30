@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DuoIFRAME")]
-[assembly: AssemblyDescription("Duo IFRAME SDK")]
+[assembly: AssemblyTitle("DuoWeb")]
+[assembly: AssemblyDescription("Duo Web SDK")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Duo Security, Inc")]
-[assembly: AssemblyProduct("DuoIFRAME")]
+[assembly: AssemblyProduct("DuoWeb")]
 [assembly: AssemblyCopyright("Copyright ©  2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

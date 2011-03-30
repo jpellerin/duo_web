@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DuoIFRAME", "DuoIFRAME\DuoIFRAME.csproj", "{902B2D72-B6F6-4CAB-92CF-9BF0BA79DEE9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DuoWeb", "DuoWeb\DuoWeb.csproj", "{902B2D72-B6F6-4CAB-92CF-9BF0BA79DEE9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DuoTest", "DuoTest\DuoTest.csproj", "{602AABC6-62E4-478B-AEE3-C036F402FE40}"
 EndProject

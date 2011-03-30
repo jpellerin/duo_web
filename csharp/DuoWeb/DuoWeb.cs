@@ -1,5 +1,5 @@
 /*
- * DuoIFRAME.cs
+ * DuoWeb.cs
  *
  * Copyright (c) 2011 Duo Security
  * All rights reserved, all wrongs reversed.
@@ -16,7 +16,7 @@ using System.Security.Cryptography;
 
 namespace Duo
 {
-	public static class IFRAME
+	public static class Web
 	{
 		const string REQUEST_PREFIX = "TX";
 		const int REQUEST_EXPIRE = 300;

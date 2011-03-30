@@ -4,7 +4,7 @@
  * Copyright (c) 2011 Duo Security
  * All rights reserved, all wrongs reversed.
  *
- * Simple test exercising the Duo IFRAME SDK
+ * Simple test exercising the Duo Web SDK
  */
 
 using System;
@@ -33,13 +33,13 @@ namespace DuoTest
 		static void Main(string[] args)
 		{
 			Console.WriteLine("Generating a signed request...");
-			string request_sig = Duo.IFRAME.SignRequest(SKEY, IKEY, USER);
+			string request_sig = Duo.Web.SignRequest(SKEY, IKEY, USER);
 			Console.WriteLine("Generated request_sig: " + request_sig);
 
 			Console.WriteLine("-------------------------------------------------");
 
 			Console.WriteLine("Validating invalid signed response...");
-			string invalid_user = Duo.IFRAME.VerifyResponse(SKEY, INVALID_RESPONSE);
+			string invalid_user = Duo.Web.VerifyResponse(SKEY, INVALID_RESPONSE);
 			if (invalid_user == null) {
 				Console.WriteLine("Got expected result: returned user is null");
 			} else {
@@ -47,7 +47,7 @@ namespace DuoTest
 			}
 
 			Console.WriteLine("Validating expired signed response...");
-			string expired_user = Duo.IFRAME.VerifyResponse(SKEY, EXPIRED_RESPONSE);
+			string expired_user = Duo.Web.VerifyResponse(SKEY, EXPIRED_RESPONSE);
 			if (expired_user == null) {
 				Console.WriteLine("Got expected result: returned user is null");
 			} else {
@@ -55,7 +55,7 @@ namespace DuoTest
 			}
 
 			Console.WriteLine("Validating future signed response...");
-			string future_user = Duo.IFRAME.VerifyResponse(SKEY, FUTURE_RESPONSE);
+			string future_user = Duo.Web.VerifyResponse(SKEY, FUTURE_RESPONSE);
 			if (future_user == USER) {
 				Console.WriteLine("Got expected result: returned user is " + future_user);
 			} else {

@@ -50,9 +50,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DuoIFRAME\DuoIFRAME.csproj">
+    <ProjectReference Include="..\DuoWeb\DuoWeb.csproj">
       <Project>{902B2D72-B6F6-4CAB-92CF-9BF0BA79DEE9}</Project>
-      <Name>DuoIFRAME</Name>
+      <Name>DuoWeb</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

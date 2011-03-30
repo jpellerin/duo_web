@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("DuoTest")]
-[assembly: AssemblyDescription("IFRAME SDK Test")]
+[assembly: AssemblyDescription("Duo Web SDK Test")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Duo Security, Inc")]
 [assembly: AssemblyProduct("DuoTest")]
