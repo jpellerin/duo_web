@@ -1,8 +1,5 @@
 Demonstration of a simple Python web server with Duo authentication.
 
-Note that this is a simple demo, and does not perform any input validation.
-See comments in server.py for details.
-
 Tested with Python 2.6.
 
 INSTALL/RUN

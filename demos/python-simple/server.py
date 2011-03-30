@@ -4,9 +4,11 @@ import urlparse
 import ConfigParser
 import cgi
 
+import cookie
 import duo_web
 
-class GetHandler(SimpleHTTPRequestHandler):
+
+class RequestHandler(SimpleHTTPRequestHandler, cookie.RequestHandler):
 
     def error(self, msg):
         """
@@ -54,7 +56,7 @@ class GetHandler(SimpleHTTPRequestHandler):
             return form[name].value
         except:
             raise ValueError
-        
+                               
     def do_GET(self):
         try:
             self.serve_file()
@@ -71,8 +73,10 @@ class GetHandler(SimpleHTTPRequestHandler):
         except ValueError:
             self.error('user query parameter is required')
             return
-        
         self.send_response(200)
+        # Set a cookie to compare with the Duo return
+        self.set_secure_cookie('user', username)
+                
         self.end_headers()
 
         sig_request = duo_web.sign_request(skey, ikey, username)
@@ -91,15 +95,13 @@ class GetHandler(SimpleHTTPRequestHandler):
         except ValueError:
             self.error('sig_response post parameter is required')
             return
-        # Note that in this demo we're not doing any input validation,
-        # In particular, we're not verifying that the Duo-authenticated user
-        # is the same as the original user.
-        #
-        # In real life, we'd validate the user returned by verify_response().
         user = duo_web.verify_response(skey, sig_response)
         if user is None:
-            self.wfile.write('Did not authenticate.')
-        self.wfile.write('Authenticated as %s.' % user)
+            self.wfile.write('Did not authenticate with Duo.')
+        elif self.get_secure_cookie('user') != user:
+            self.wfile.write('Duo user does not match local user.')
+        else:
+            self.wfile.write('Authenticated with Duo as %s.' % user)
         
                                                 
 if __name__ == '__main__':
@@ -110,5 +112,9 @@ if __name__ == '__main__':
     ikey = config_d['ikey']
     skey = config_d['skey']
     host = config_d['host']        
+    config_d = dict(config.items('app'))
+    cookie_secret = config_d['cookie_secret']
 
-    HTTPServer(('', 8080), GetHandler).serve_forever()
+    server = HTTPServer(('', 8080), RequestHandler)
+    server.cookie_secret = cookie_secret
+    server.serve_forever()
