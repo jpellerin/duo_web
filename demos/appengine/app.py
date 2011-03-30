@@ -11,7 +11,7 @@ from google.appengine.api import users
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 
-import duo_iframe
+import duo_web
 import cookie
 
 configfile = 'duo.conf'
@@ -84,9 +84,9 @@ class SecondaryAuthPage(BasePage):
             self.redirect('/')
             return
         (username, _) = self.user_email_parts(user)
-        sig_request = duo_iframe.sign_request(skey, ikey, username)
+        sig_request = duo_web.sign_request(skey, ikey, username)
         self.response.out.write(
-            "<script src='/static/Duo-IFRAME-v1.js'></script>"
+            "<script src='/static/Duo-Web-v1.bundled.min.js'></script>"
             "<script>"
             "Duo.init({'host':'%(host)s', 'post_action':'%(post_action)s', "
             "'sig_request':'%(sig_request)s'});"
@@ -109,7 +109,7 @@ class SecondaryAuthPage(BasePage):
 
         sig_response = self.request.get('sig_response', '')
         (user, _) = self.user_email_parts(user)
-        duo_user = duo_iframe.verify_response(skey, sig_response)
+        duo_user = duo_web.verify_response(skey, sig_response)
         if duo_user != user:
             self.write('Did not authenticate.')
             return
