@@ -18,8 +18,8 @@ Add 'duo_app' to INSTALLED_APPS.
 STATIC_PREFIX: Prefix for URLs where static files are served from, without the
 trailing slash (e.g. '/static', 'http://example.com/static').
 
-Copy duo_app/static/Duo-IFRAME-v1.js to wherever you're serving static files
-from.
+Copy duo_app/static/Duo-Web-v1.bundled.min.js to wherever you're serving static
+files from.
 
 TEST:
 
@@ -28,7 +28,7 @@ app, which has the non-Duo setup already completed, as well as the setup needed
 for a complete barebones site with authorization.  To run this site:
 
 As noted above, set up path, edit DUO_IKEY, DUO_SKEY, DUO_HOST in settings,
-and copy Duo-IFRAME-v1.js to the static directory.
+and copy Duo-Web-v1.bundled.min.js to the static directory.
 
 Start the site with "python manage.py syncdb; python manage.py runserver".
 

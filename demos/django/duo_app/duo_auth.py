@@ -17,7 +17,7 @@ from django.utils.http import urlquote
 from django.shortcuts import render_to_response
 from django.utils.translation import ugettext as _
 
-import duo_iframe
+import duo_web
 
 def duo_username(user):
     """ Return the Duo username for user. """
@@ -84,7 +84,7 @@ def login(request):
         message = request.GET.get(
             'message', 'Secondary authorization required.')
         next = request.GET.get('next')
-        sig_request = duo_iframe.sign_request(
+        sig_request = duo_web.sign_request(
             settings.DUO_SKEY, settings.DUO_IKEY, duo_username(request.user))
         template = loader.get_template('duo_login.html')
         context = RequestContext(
@@ -92,14 +92,14 @@ def login(request):
             {'message': message,
              'next': next,
              'duo_js_src': '/'.join([settings.STATIC_PREFIX,
-                                     'Duo-IFRAME-v1.js']),
+                                     'Duo-Web-v1.bundled.min.js']),
              'duo_host':settings.DUO_HOST,
              'post_action':request.path,
              'sig_request':sig_request})
         return HttpResponse(template.render(context))
     elif request.method == 'POST':
         sig_response = request.POST.get('sig_response', '')
-        duo_user = duo_iframe.verify_response(settings.DUO_SKEY, sig_response)
+        duo_user = duo_web.verify_response(settings.DUO_SKEY, sig_response)
         next = request.POST.get('next')
         if duo_user != duo_username(request.user):
             # Redirect user to try again, keeping the next argument.
