@@ -31,11 +31,11 @@ Eval users (e-mail duo_web@duosecurity.com to request a trial): be sure to set y
 # Support
 
 Questions? Join the duo_web mailing list at
-http://groups.google.com/group/duo_web
+<http://groups.google.com/group/duo_web>
 
 Report any bugs, feature requests, etc. to us directly:
-https://github.com/duosecurity/duo_web/issues
+<https://github.com/duosecurity/duo_web/issues>
 
 Have fun!
 
-http://duosecurity.com
+<http://duosecurity.com>
