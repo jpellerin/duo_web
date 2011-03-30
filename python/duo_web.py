@@ -1,5 +1,5 @@
 # 
-# duo_iframe.py
+# duo_web.py
 #
 # Copyright (c) 2011 Duo Security
 # All rights reserved, all wrongs reversed.

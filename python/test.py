@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 
-'''Simple tests for Duo IFRAME SDK'''
+'''Simple tests for Duo Web SDK'''
 
 import unittest
-import duo_iframe
+import duo_web
 
 IKEY = "DIXXXXXXXXXXXXXXXXXX";
 SKEY = "deadbeefdeadbeefdeadbeefdeadbeefdeadbeef";
@@ -17,17 +17,17 @@ FUTURE_RESPONSE = "AUTH|dGVzdHVzZXJ8RElYWFhYWFhYWFhYWFhYWFhYWFh8MTYxNTcyNzI0Mw==
 class TestSDK(unittest.TestCase):
 
     def test_sign_request(self):
-        request_sig = duo_iframe.sign_request(SKEY, IKEY, USER)
+        request_sig = duo_web.sign_request(SKEY, IKEY, USER)
         self.assertNotEqual(request_sig, None)
 
     def test_verify_response(self):
-        invalid_user = duo_iframe.verify_response(SKEY, INVALID_RESPONSE)
+        invalid_user = duo_web.verify_response(SKEY, INVALID_RESPONSE)
         self.assertEqual(invalid_user, None)
 
-        expired_user = duo_iframe.verify_response(SKEY, EXPIRED_RESPONSE)
+        expired_user = duo_web.verify_response(SKEY, EXPIRED_RESPONSE)
         self.assertEqual(expired_user, None)
 
-        future_user = duo_iframe.verify_response(SKEY, FUTURE_RESPONSE)
+        future_user = duo_web.verify_response(SKEY, FUTURE_RESPONSE)
         self.assertEqual(future_user, USER)
 
 if __name__ == '__main__':
