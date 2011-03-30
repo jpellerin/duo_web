@@ -10,7 +10,7 @@ Duo provides simple two-factor authentication as a service via:
 4.  Duo mobile app for smartphone push authentication
 5.  Duo hardware token to generate one-time passcodes
 
-This package allows a web developer to quickly add Duo's interactive, self-service, two-factor authentication to any web login form — without setting up secondary user accounts directory synchronization, servers, or hardware.
+This package allows a web developer to quickly add Duo's interactive, self-service, two-factor authentication to any web login form — without setting up secondary user accounts, directory synchronization, servers, or hardware.
 
 What's here:
 
