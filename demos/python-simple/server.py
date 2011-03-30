@@ -4,7 +4,7 @@ import urlparse
 import ConfigParser
 import cgi
 
-import duo_iframe
+import duo_web
 
 class GetHandler(SimpleHTTPRequestHandler):
 
@@ -75,9 +75,9 @@ class GetHandler(SimpleHTTPRequestHandler):
         self.send_response(200)
         self.end_headers()
 
-        sig_request = duo_iframe.sign_request(skey, ikey, username)
+        sig_request = duo_web.sign_request(skey, ikey, username)
         self.wfile.write(
-            "<script src='/Duo-IFRAME-v1.js'></script>"
+            "<script src='/Duo-Web-v1.bundled.min.js'></script>"
             "<script>"
             "Duo.init({'host':'%(host)s', 'sig_request':'%(sig_request)s'});"
             "</script>"
@@ -93,10 +93,10 @@ class GetHandler(SimpleHTTPRequestHandler):
             return
         # Note that in this demo we're not doing any input validation,
         # In particular, we're not verifying that the Duo-authenticated user
-        # is the same as the original user, or that the given sig_response
-        # came from the previous GET.
-        # In real life, we'd want XSRF protection, and we'd validate the user.
-        user = duo_iframe.verify_response(skey, sig_response)
+        # is the same as the original user.
+        #
+        # In real life, we'd validate the user returned by verify_response().
+        user = duo_web.verify_response(skey, sig_response)
         if user is None:
             self.wfile.write('Did not authenticate.')
         self.wfile.write('Authenticated as %s.' % user)
