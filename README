@@ -29,6 +29,9 @@ python
 	Duo web SDKs for ASP.NET, Java, PHP, and Python environments. 
 	See the README and examples contained within for details.
 
+demos
+	Example integrations demonstrating how to use the duo_web SDK.
+
 Usage
 -----
 
