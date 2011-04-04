@@ -1,5 +1,5 @@
 # Cookie library adapted from Cyclone's web.py.
-# Cookie secret is a RequestHandler class attribute.
+# Cookie secret is a RequestHandler.server class attribute.
 
 # Adapted from Cyclone's web.py:
 # Copyright 2010 Alexandre Fiori
@@ -50,11 +50,7 @@ class RequestHandler(object):
         if re.search(r"[\x00-\x20]", name + value):
             # Don't let us accidentally inject bad stuff
             raise ValueError("Invalid cookie %r: %r" % (name, value))
-        # original lib writes _new_cookies to headers at end of request
-        #if not hasattr(self, "_new_cookies"):
-        #    self._new_cookies = []
         new_cookie = Cookie.BaseCookie()
-        #self._new_cookies.append(new_cookie)
         new_cookie[name] = value
         if domain:
             new_cookie[name]["domain"] = domain
@@ -116,9 +112,6 @@ class RequestHandler(object):
             return None
 
     def _cookie_signature(self, *parts):
-        #self.require_setting("cookie_secret", "secure cookies")
-        #hash = hmac.new(self.application.settings["cookie_secret"],
-        #                digestmod=hashlib.sha1)
         hash = hmac.new(self.server.cookie_secret,
                         digestmod=hashlib.sha1)
         for part in parts: hash.update(part)
