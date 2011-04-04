@@ -4,8 +4,8 @@ Tested with Python 2.6.
 
 # Install/Run
 
-To set up, edit duo.conf with the appropriate `ikey`, `skey`, and `host`
-values.
+To set up, edit duo.conf with the appropriate `ikey`, `skey`, `host`,
+and `cookie_secret` values.  `cookie_secret` should be a random string.
 
 To run the server on port 8080:
 
