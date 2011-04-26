@@ -14,11 +14,11 @@ Edit application name in app.yaml.
 
 Run the demo server locally from one directory up:
 
-  dev_appserver.py gae-openid-provider
+    dev_appserver.py gae-openid-provider
 
 Deploy to GAE from one directory up:
 
-  appcfg.py update gae-openid-provider 
+    appcfg.py update gae-openid-provider 
 
 # Usage
 
@@ -30,7 +30,7 @@ authenticating with an OpenID consumer.
 To run unit tests, have . and the Google App Engine SDK in your path
 (/usr/local/bin/google_appengine on my CentOS box), and:
 
-  python test
+    python test
 
 If you're not running on a Linux variant, you'll probably have to edit the
 GAE paths in test/setup.py first, see comment.
