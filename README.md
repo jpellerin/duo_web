@@ -22,11 +22,13 @@ What's here:
 
 How it works:
 
-1. The original server-side login form handler is modified to return a secondary login page on success, with a few lines of Duo's Javascript snippet and IFRAME.
-2. The user interacts with the Duo IFRAME for secondary login (or to enroll themselves if it's their first Duo login)
-3. Duo's Javascript posts the secure result token from the IFRAME to a secondary login handler which verifies the token and sets auth state (as the original login form handler did, likely in a cookie/session).
+1. You add a secondary login page that contains Duo's Javascript snippet and IFRAME.
+2. The user interacts with the Duo IFRAME for secondary login (or enrollment if it's their first time).
+3. Duo's Javascript automatically posts a signed response from the IFRAME to a secondary login handler. This handler should use Duo's verify_response() to check that authentication succeeded.
 
-Eval users (e-mail duo_web@duosecurity.com to request a trial): be sure to set your Duo API host to `api-eval.duosecurity.com`.
+Developer documentation: https://admin-eval.duosecurity.com/guides/websdk
+
+Eval users (sign up at http://www.duosecurity.com ): be sure to set your Duo API host to `api-eval.duosecurity.com`.
 
 # Support
 
