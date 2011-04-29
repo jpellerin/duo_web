@@ -56,7 +56,7 @@ def duo_auth_required(redirect_field_name=REDIRECT_FIELD_NAME):
     """
     def decorator(view_func):
         def _wrapped_view(request, *args, **kwargs):
-            if not duo_authenticated(request):
+            if duo_authenticated(request):
                 return view_func(request, *args, **kwargs)
             path = urlquote(request.get_full_path())
             return HttpResponseRedirect(
